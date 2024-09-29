@@ -7,24 +7,19 @@ Este proyecto utiliza la biblioteca de **SpeechRecognition** para transcribir au
 
 ## Instrucciones Paso a Paso
 
-### 1. **Instalar Python y Crear un Entorno Virtual**
+### 1. **Crear un Entorno Virtual**
 
-#### a) **Instalar Python**
+#### a) **Instalar pipenv**
 
-Asegúrate de tener instalada la versión de Python 3.10 o superior. Puedes descargarla desde [este enlace](https://www.python.org/downloads/).
-
-#### b) **Crear el entorno virtual**
-
-En Visual Studio Code o cualquier terminal, instala `pipenv` y crea un entorno virtual ejecutando los siguientes comandos:
+Instala `pipenv` si no lo tienes instalado previamente:
 
 ```bash
 pip install pipenv
-pipenv --python 3.10
 ```
 
-#### c) **Activar el entorno virtual**
+#### b) **Crear y activar el entorno virtual**
 
-Una vez creado el entorno virtual, actívalo con el siguiente comando:
+En la terminal de Visual Studio Code o cualquier terminal, crea y activa el entorno virtual con los siguientes comandos:
 
 ```bash
 pipenv shell
@@ -38,13 +33,13 @@ Dentro del entorno virtual, instala las bibliotecas necesarias:
 pipenv install SpeechRecognition
 ```
 
-Si estás trabajando con archivos de audio, también puedes instalar otra biblioteca útil para la manipulación de archivos de audio, como `PyAudio`:
+Si estás trabajando con archivos de audio, puedes instalar también `PyAudio` para mejorar la captura de audio:
 
 ```bash
 pipenv install PyAudio
 ```
 
-> **Nota**: Si tienes problemas instalando PyAudio en algunos sistemas, puede ser necesario usar un instalador binario precompilado. Consulta la documentación oficial de PyAudio para más detalles.
+> **Nota**: En algunos sistemas, la instalación de `PyAudio` puede requerir un instalador binario precompilado. Consulta la documentación oficial de PyAudio para más detalles.
 
 ### 3. **Crear los Archivos del Proyecto**
 
@@ -105,23 +100,11 @@ select_level = input("Seleccione un nivel: facil, intermedio o dificil: ").lower
 play_game(select_level)
 ```
 
-Este juego selecciona una palabra al azar de la lista según el nivel que elija el usuario, luego utiliza la función `speech()` para verificar si el usuario ha pronunciado correctamente la palabra.
-
 ### 4. **Ejecutar el Proyecto**
 
-1. Activa tu entorno virtual:
 
-```bash
-pipenv shell
-```
 
-2. Ejecuta el archivo del juego con:
-
-```bash
-python bonus_game.py
-```
-
-3. Selecciona el nivel de dificultad e intenta pronunciar correctamente las palabras que se te indiquen. ¡El juego calculará tu puntuación en función de cuántas palabras aciertes!
+1. Selecciona el nivel de dificultad e intenta pronunciar correctamente las palabras que se te indiquen. ¡El juego calculará tu puntuación en función de cuántas palabras aciertes!
 
 ---
 
@@ -131,3 +114,4 @@ python bonus_game.py
 - Puedes mejorar el juego `bonus_game.py` añadiendo más palabras o niveles de dificultad.
 
 ---
+
