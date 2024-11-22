@@ -68,38 +68,86 @@ Esta función captura el audio del micrófono y lo transcribe utilizando el serv
 Crea un archivo adicional llamado `bonus_game.py`. Este archivo contiene un simple juego en el que los usuarios deben repetir palabras en inglés correctamente para ganar puntos:
 
 ```python
-from speech import speech
+from Speech import speech
+# Importa el módulo `speech` desde un archivo llamado `Speech`. Este módulo probablemente contiene una función que captura y transcribe la voz del usuario.
+
 import random, time
+# Importa las bibliotecas `random` y `time`. `random` se usa para seleccionar elementos aleatorios y `time` para manejar pausas temporales.
 
 niveles = {
     "facil": ["agenda", "friend", "mouse"],
-    "intermedio": ["computer", "algorithm", "developer"],
+    "intemedio": ["computer", "algorithm", "developer"],
     "dificil": ["neural network", "machine learning", "artificial intelligence"]
 }
+# Crea un diccionario llamado `niveles` que organiza las palabras en tres niveles de dificultad: fácil, intermedio y difícil.
 
 def play_game(level):
+    # Define una función llamada `play_game` que toma un parámetro `level` (nivel de dificultad elegido por el usuario).
+
     words = niveles.get(level, [])
+    # Busca en el diccionario `niveles` las palabras asociadas al nivel elegido. Si el nivel no existe, devuelve una lista vacía.
+
     if not words:
         print("Nivel incorrecto")
         return
+    # Si no se encontraron palabras para el nivel, se imprime un mensaje y la función termina.
+
     score = 0
+    # Inicializa el puntaje del jugador en 0.
+
     num_intentos = 3
-    for i in range(len(words)):
+    # Define que el jugador tendrá tres intentos para pronunciar palabras.
+
+    for i in range(num_intentos):
+        # Inicia un bucle que se repetirá tres veces (una por cada intento).
+
         random_word = random.choice(words)
-        print(f"Por favor, pronuncie esta palabra: {random_word}")
+        # Selecciona una palabra aleatoria de la lista correspondiente al nivel.
+
+        print(f"Por favor, pronuncie esta palabra {random_word}")
+        # Muestra en pantalla la palabra que el jugador debe pronunciar.
+
         recog_word = speech()
+        # Llama a la función `speech()` para capturar y transcribir lo que el jugador pronuncia.
+
         if recog_word == random_word:
-            print("¡Es correcto!")
+            # Compara la palabra transcrita (`recog_word`) con la palabra objetivo (`random_word`).
+
+            print("Es correcto!")
+            # Si coinciden, el jugador respondió correctamente.
+
             score += 1
+            # Incrementa el puntaje del jugador en 1.
+
         else:
-            print(f"Error, recuerda, la palabra era: {random_word}")
+            # Si las palabras no coinciden:
+
+            print(f"La palabra que dijo: {recog_word}")
+            # Informa cuál fue la palabra pronunciada por el jugador.
+
+            print(f"Error, recuerda, la palabra es: {random_word}")
+            # Muestra un mensaje indicando la palabra correcta.
+
         time.sleep(2)
-    print(f"¡El juego ha terminado! Tu puntuación es: {score}")
+        # Pausa la ejecución durante 2 segundos antes del siguiente intento.
+
+    print(f"El juego se terminó! su puntuación es: {score}")
+    # Cuando el bucle termina, muestra el puntaje total del jugador.
 
 select_level = input("Seleccione un nivel: facil, intermedio o dificil: ").lower()
-play_game(select_level)
-```
+# Solicita al jugador que elija un nivel de dificultad escribiendo su nombre. La entrada del usuario se convierte a minúsculas para facilitar la comparación.
 
+play_game(select_level)
+# Llama a la función `play_game` con el nivel seleccionado por el jugador.
+
+```
+## Resumen de funcionamiento
+- El usuario elige un nivel de dificultad.
+- El programa selecciona palabras del nivel correspondiente y las muestra al jugador para que las pronuncie.
+- Utiliza el módulo speech para transcribir la voz del jugador.
+- Compara la transcripción con la palabra original y calcula un puntaje basado en las coincidencias.
+- Muestra el puntaje final al terminar los intentos.
+  
 ### 4. **Ejecutar el Proyecto**
 
 
